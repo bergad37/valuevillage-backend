@@ -10,10 +10,73 @@ generator client {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
+  id         String     @id @default(uuid())
+  name       String
+  email      String     @unique
+  socialMedia Json?
+  properties Property[] // One user can be architect for many properties
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model HeroSection {
+  id          String   @id @default(uuid())
+  mainTitle   String
+  description String
+  slideImages String[]
+  addressLine Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AboutUs{
+  id          String   @id @default(uuid())
+  title       String
+  slogan      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactUs{
+  id                String   @id @default(uuid())
+  emailAddress      String[]
+  phoneAddress      String[]
+  addressLine       Json?
+  officeHours       String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Property {
+  id          String   @id @default(uuid())
+  name        String
+  status      String   // FOR SALE, FOR RENT, etc.
+  mainBanner  String   // URL for main banner image
+  banners     String[] // Array of banner image URLs
+  description String   @db.Text // Long text description
+  propertyId  String?  // Optional property identifier
+  homeArea    String?  // Home area measurement
+  beds        String?  // Number of bedrooms
+  baths       String?  // Number of bathrooms
+  yearBuilt   Int?     // Year the property was built
+  floors      Json?    // Array of floor objects with title, image, description
+  video       String?  // Video URL
+  architect   User     @relation(fields: [architectId], references: [id])
+  architectId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Blog {
+  id       String   @id @default(uuid())
+  image    String
+  title    String
+  author   String
+  category String
+  date     DateTime
+  description   String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 datasource db {
