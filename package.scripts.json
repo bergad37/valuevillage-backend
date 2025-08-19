@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "lint": "eslint 'src/**/*.{js,ts}'",
+    "lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
+    "format": "prettier --write 'src/**/*.{js,ts,json,md}'",
+    "build": "tsc --noEmit false",
+    "prebuild": "npm run lint && npm run format"
+  }
+}

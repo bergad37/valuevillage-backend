@@ -12,9 +12,15 @@ const createUser = async (data: any) => {
   return await prisma.user.create({ data });
 };
 
+
 // Get a user by ID
 const getUserById = async (id: any) => {
   return await prisma.user.findUnique({ where: { id: id } });
+};
+
+// Get a user by email
+const getUserByEmail = async (email: string) => {
+  return await prisma.user.findUnique({ where: { email } });
 };
 
 // Update a user
@@ -27,4 +33,4 @@ const deleteUser = async (id: any) => {
   return await prisma.user.delete({ where: { id: id } });
 };
 
-export default { getAllUsers, createUser, getUserById, updateUser, deleteUser };
+export default { getAllUsers, createUser, getUserById, getUserByEmail, updateUser, deleteUser };
