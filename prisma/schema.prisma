@@ -13,10 +13,19 @@ model User {
   id         String     @id @default(uuid())
   name       String
   email      String     @unique
+  password   String
+  role       Role       @relation(fields: [roleId], references: [id])
+  roleId     String
   socialMedia Json?
   properties Property[] // One user can be architect for many properties
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
+}
+
+model Role {
+  id    String  @id @default(uuid())
+  name  String  @unique
+  users User[]
 }
 
 model HeroSection {
