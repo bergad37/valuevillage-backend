@@ -18,7 +18,7 @@ app.use(express.json());
 import swaggerDocument from './swagger';
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Register all routes
-app.use('/', routes);
+app.use('/api', routes);
 
 app.use(errorHandler);
 
