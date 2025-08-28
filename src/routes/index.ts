@@ -10,7 +10,7 @@ const router = express.Router();
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes);
 router.use('/property', propertyRoutes);
-router.use('/blog', blogRoutes);
+router.use('/blogs', blogRoutes);
 // Add more routes here as your app grows
 
 export default router;

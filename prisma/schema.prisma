@@ -17,7 +17,6 @@ model User {
   role       Role       @relation(fields: [roleId], references: [id])
   roleId     String
   socialMedia Json?
-  properties Property[] // One user can be architect for many properties
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
 }
@@ -70,8 +69,6 @@ model Property {
   yearBuilt   Int?     // Year the property was built
   floors      Json?    // Array of floor objects with title, image, description
   video       String?  // Video URL
-  architect   User     @relation(fields: [architectId], references: [id])
-  architectId String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

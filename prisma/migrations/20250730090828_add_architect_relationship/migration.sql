@@ -52,7 +52,7 @@ CREATE TABLE "Property" (
     "yearBuilt" INTEGER,
     "floors" JSONB,
     "video" TEXT,
-    "architectId" TEXT NOT NULL,
+    -- "architectId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -74,5 +74,5 @@ CREATE TABLE "Blog" (
     CONSTRAINT "Blog_pkey" PRIMARY KEY ("id")
 );
 
--- AddForeignKey
-ALTER TABLE "Property" ADD CONSTRAINT "Property_architectId_fkey" FOREIGN KEY ("architectId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+-- Removed architect relation: no architectId column exists, so skip FK creation
+-- ALTER TABLE "Property" ADD CONSTRAINT "Property_architectId_fkey" FOREIGN KEY ("architectId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

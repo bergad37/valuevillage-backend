@@ -22,6 +22,7 @@ const addBlog = async (req: Request, res: Response) => {
       .status(201)
       .json({ data: newBlog, success: true, message: 'Blog saved fetched successfully' });
   } catch (error) {
+    console.log('#######', error);
     res.status(400).json({ error: 'Failed to create blog' });
   }
 };

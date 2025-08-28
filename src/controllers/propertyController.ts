@@ -22,6 +22,7 @@ const addProperty = async (req: Request, res: Response) => {
       .status(201)
       .json({ data: newProperty, success: true, message: 'Property saved fetched successfully' });
   } catch (error) {
+console.log('error', error);
     res.status(400).json({ error: 'Failed to create property' });
   }
 };
@@ -41,19 +42,19 @@ const fetchPropertyById = async (req: Request, res: Response) => {
 
 const patchProperty = async (req: Request, res: Response) => {
   try {
-    const updatedUser = await propertyService.updateProperty(req.params.id, req.body);
-    res.json({ data: updatedUser, success: true });
+    const updatedPropertyd = await propertyService.updateProperty(req.params.id, req.body);
+    res.json({ data: updatedPropertyd, success: true });
   } catch (error) {
-    res.status(400).json({ error: 'Failed to update user' });
+    res.status(400).json({ error: 'Failed to update property' });
   }
 };
 
 const removeProperty = async (req: Request, res: Response) => {
   try {
-    const userDeleted = await propertyService.deleteProperty(req.params.id);
-    res.status(204).send({ success: userDeleted });
+    const propertyDeleted = await propertyService.deleteProperty(req.params.id);
+    res.status(204).send({ success: propertyDeleted });
   } catch (error) {
-    res.status(400).json({ error: 'Failed to delete user' });
+    res.status(400).json({ error: 'Failed to delete property' });
   }
 };
 
