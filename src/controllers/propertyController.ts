@@ -20,7 +20,7 @@ const addProperty = async (req: Request, res: Response) => {
     const newProperty = await propertyService.createProperty(req.body);
     res
       .status(201)
-      .json({ data: newProperty, success: true, message: 'Property saved fetched successfully' });
+      .json({ data: newProperty, success: true, message: 'Property saved  successfully' });
   } catch (error) {
 console.log('error', error);
     res.status(400).json({ error: 'Failed to create property' });
